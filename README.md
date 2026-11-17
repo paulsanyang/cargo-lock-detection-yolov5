@@ -11,7 +11,7 @@ A computer vision project that fine-tunes **YOLOv5s** to detect aircraft cargo l
 
 ## Repository layout
 
-- `notebooks/cargo_lock_detection.ipynb` — documented, cleaned research notebook.
+- `cargo_lock_detection.ipynb` — documented, cleaned research notebook.
 - `original_execution_logs.txt` — text logs extracted from the original notebook, kept separately to reduce notebook size.
 - `requirements.txt` — Python dependencies.
 - `.gitignore` — excludes API keys, downloaded datasets, weights and generated outputs.
