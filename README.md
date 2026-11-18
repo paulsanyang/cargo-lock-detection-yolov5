@@ -36,7 +36,7 @@ cargo-lock-detection-yolov5/
 
 3. Open `cargo_lock_detection.ipynb` and run the notebook cells in order. A GPU-enabled environment is recommended.
 
-Alternatively, an existing `best.pt` checkpoint can be used to skip training.
+%Alternatively, an existing `best.pt` checkpoint can be used to skip training.
 
 ## Technologies
 
