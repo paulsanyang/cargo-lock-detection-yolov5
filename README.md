@@ -1,31 +1,51 @@
 # Aircraft Cargo-Lock Detection with YOLOv5s
 
-A computer vision project that fine-tunes **YOLOv5s** to detect aircraft cargo locks in images. The notebook covers Roboflow data preparation, model training, held-out evaluation, annotated prediction galleries, false-positive inspection, and exploratory Grad-CAM.
+**Fifteenth Montreal Industrial Problem Solving Workshop**  
+**Centre de recherches mathématiques (CRM), Montréal, Canada**
 
-## Quick start
+## Overview
 
-1. Create a Python environment with PyTorch installed (GPU recommended).
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Provide a `ROBOFLOW_API_KEY` via environment variable or Colab secret.
-4. Open `notebooks/cargo_lock_detection.ipynb` and execute the cells in order. Alternatively, load an existing `best.pt` checkpoint and skip training.
+This project was undertaken during the Fifteenth Montreal Industrial Problem Solving Workshop at the Centre de recherches mathématiques (CRM) in Montréal, Canada.
 
-## Repository layout
+The project explores the application of deep learning to aircraft cargo-lock detection using **YOLOv5s**. My contributions included fine-tuning the object detection model, evaluating its performance, analysing predictions and false positives, and implementing exploratory Grad-CAM visualizations.
 
-- `cargo_lock_detection.ipynb` — documented, cleaned research notebook.
-- `original_execution_logs.txt` — text logs extracted from the original notebook, kept separately to reduce notebook size.
-- `requirements.txt` — Python dependencies.
-- `.gitignore` — excludes API keys, downloaded datasets, weights and generated outputs.
+## Methodology
 
-The notebook saves generated artifacts under `outputs/`, including metrics, prediction images, a random sample gallery, and false-positive examples. These outputs are excluded from Git by default; publish only selected, license-compliant figures if desired.
+- **Dataset:** [AC Locks (Version 9)](https://universe.roboflow.com/ac-locks/ac-locks/dataset/9), hosted on Roboflow Universe.
+- **Model:** YOLOv5s initialized with pretrained `yolov5s.pt` weights and trained for 300 epochs.
+- **Evaluation:** Held-out evaluation, annotated prediction galleries, and false-positive inspection.
+- **Interpretability:** Exploratory Grad-CAM analysis of image regions influencing model predictions.
 
-## Dataset and model
+## Repository Structure
 
-Dataset: [AC Locks on Roboflow Universe, version 9](https://universe.roboflow.com/ac-locks/ac-locks/dataset/9). Original training configuration: YOLOv5s initialized from `yolov5s.pt`, 300 epochs. Other training hyperparameters were unspecified in the original notebook. The cleaned notebook uses a fixed random seed for the 80/20 train/validation split and retains the test split for evaluation.
+```text
+cargo-lock-detection-yolov5/
+├── cargo_lock_detection.ipynb
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
 
-## Notes on interpretability
+## Getting Started
 
-Grad-CAM is experimental: the notebook scores the strongest pre-NMS YOLOv5 proposal using objectness × class probability. It does not explain a specific post-NMS detection, and the visualization uses a simple resize rather than letterbox preprocessing. See the notebook for caveats.
+1. Clone the repository and install the required dependencies:
 
-## Reproducibility
+   `pip install -r requirements.txt`
 
-No new training run or runtime validation was performed during the notebook cleanup. Report numerical metrics only after executing the evaluation section with a valid checkpoint. Verify dataset license and attribution before distributing images.
+2. Configure your `ROBOFLOW_API_KEY` using an environment variable or Colab secret.
+
+3. Open `cargo_lock_detection.ipynb` and run the notebook cells in order. A GPU-enabled environment is recommended.
+
+Alternatively, an existing `best.pt` checkpoint can be used to skip training.
+
+## Technologies
+
+Python · PyTorch · YOLOv5s · Ultralytics · Roboflow · OpenCV · Grad-CAM · Jupyter Notebook
+
+## Acknowledgements
+
+This project was undertaken as part of the **Fifteenth Montreal Industrial Problem Solving Workshop**, associated with the **Centre de recherches mathématiques (CRM), Montréal, Canada**.
+
+The dataset is available through [Roboflow Universe](https://universe.roboflow.com/ac-locks/ac-locks/dataset/9). Dataset licensing and attribution requirements should be checked before redistributing images.
+
+**Note:** Grad-CAM analysis is exploratory and does not explain individual post-NMS detections. Model weights, downloaded datasets, and generated outputs are excluded from the repository.
